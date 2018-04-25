@@ -1,14 +1,36 @@
 var username = '';
 
-var words = ['cows', 'tracks', 'arrived', 'located', 'sir', 'seat',
-   'division', 'effect', 'underline', 'view', 'annual',
-   'anniversary', 'centennial', 'millennium', 'perennial',
-   'artisan', 'apprentice', 'meteorologist', 'blizzard', 'tornado',
-   'intensify','speed','count','consonant','someone',
-   'sail','rolled','bear','wonder','smiled','angle', 'absent',
-   'decadent', 'excellent', 'frequent', 'impatient', 'cell',
-   'cytoplasm', 'organelle', 'diffusion', 'osmosis',
-   'respiration'
+var words = [
+    'perro',
+    'gato',
+    'carro',
+    'rio',
+    'finca',
+    'balon',
+    'nacional',
+    'atletico',
+    'vladimir',
+    'copa',
+    'campeon',
+    'lago',
+    'oso',
+    'rana',
+    'franco',
+    'arbol',
+    'remo',
+    'santander',
+    'rama',
+    'lara',
+    'edificio',
+    'casa',
+    'bate',
+    'pared',
+    'cuadro',
+    'radamel',
+    'pibe',
+    'james',
+    'puerta',
+    'bombillo',
 ];
 
 
@@ -18,33 +40,31 @@ var allOrientations = ['horizontal','horizontalBack','vertical','verticalUp',
                        'diagonal','diagonalUp','diagonalBack','diagonalUpBack'];
 
     function create(height, width) {
-        var gamePuzzle = wordfindgame.create(
-            words,
-            '#puzzle-container',
-            '#puzzle-words'
-        );
+        var puzzle = wordfind.newPuzzle(words, {
+            height: height,
+            width:  width,
+            orientations: ['horizontal', 'vertical'],
+            fillBlanks: true,
+            preferOverlap: true
+        });
 
+        var table = arrayToTable(puzzle, {
+            thead: true,
+            attrs: {class: 'table'}
+        })
 
+        $('.letter-soup').append(table);
+    }
+
+    function create_soup() {
+        var gamePuzzle = wordfindgame.create(words, '#puzzle-container', '#puzzle-words');
         $("#solveBTN").click(function(){
+            // Solve the puzzle !
             var result = wordfindgame.solve(gamePuzzle, words);
             parar();
         });
-
-        // var words = ['cow'];
-        // var puzzle = wordfind.newPuzzle(words, {
-        //     // Set dimensions of the puzzle
-        //     height: 3,
-        //     width:  3,
-        //     // or enable all with => orientations: wordfind.validOrientations,
-        //     orientations: ['horizontal', 'vertical'],
-        //     // Set a random character the empty spaces
-        //     fillBlanks: true,
-        //     preferOverlap: false
-        // });
-
-        // console.log(puzzle);
-
     }
+
 
     var centesimas = 0;
     var segundos = 0;
@@ -105,10 +125,35 @@ $(function() {
         height =  parseInt($(".form-heigth").val()),
         width =  parseInt($(".form-width").val()),
         $('.player').show();
-        $('.player-name').text($(".form-name").val());
-        $('.soup').show();
+        $('.player-name').text($(".form-name").val() + ' Fecha de juego:' + new Date());
+        $('.letter-soup').show();
         inicio();
         create(height, width);
 
     });
+
+    $( ".random" ).on('click', function( event ) {
+        event.preventDefault();
+        $('.player').show();
+        var name = $(".form-name").val();
+        if (name) {
+            $('.player-name').text($(".form-name").val() + ' Fecha de juego:' + new Date());
+        } else {
+            $('.player-name').text('Jugador anónimo  Fecha de juego:' + new Date());
+        }
+
+        $('.soup').show();
+        inicio();
+        create_soup();
+
+        $("#puzzle-container button").on('mousedown', function() {
+            setTimeout(function(){
+                if ($("#puzzle-container button").first().hasClass( "complete" )) {
+                    parar();
+                }
+            }, 1000);
+        });
+
+    });
+
 });

@@ -6,10 +6,10 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://code.jquery.com/jquery-2.2.4.min.js"   integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="   crossorigin="anonymous"></script>
-
     <link rel="stylesheet" type="text/css" href="styles.css">
     <script src="wordfind.js"></script>
     <script src="wordfindgame.js"></script>
+    <script src="arrayToTable.js"></script>
     <script src="main.js"></script>
   </head>
   <body>
@@ -37,9 +37,20 @@
                 <label>Ancho:</label>
                 <input class="form-control form-width" id="pwd" required type="number">
             </div>
-            <button type="submit" class="btn btn-primary">Jugar!</button>
+            <div class="sub-box">
+                <button type="submit" class="btn btn-primary">Crear sopa custom</button>
+                <small>*Requiere nombre y tamaño</small>
+            </div>
+            <div class="sub-box">
+                <button class="btn btn-primary random">Crear sopa random</button>
+                <small>* No requiere nombre ni tamaño</small>
+            </div>
         </form>
+
         <h3 class="player" style="display:none"><b>Bienvenido:</b><p class="player-name"></p></h3>
+
+        <div class="letter-soup" style="display:none"></div>
+
         <div class="soup" style="display:none">
             <div id="puzzle-container"></div>
             <div id="puzzle-words"></div>

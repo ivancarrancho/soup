@@ -131,3 +131,18 @@
 .boton:hover{
     box-shadow: 0px 0px 14px #3aad02;
 }
+
+.table>tbody>tr>td, .table>tbody>tr>th, .table>tfoot>tr>td, .table>tfoot>tr>th, .table>thead>tr>td, .table>thead>tr>th, thead {
+    border-style: solid;
+    border-width: 1px;
+    border-color: #3379b7
+}
+
+.container small {
+    display: block;
+}
+
+.sub-box {
+    display: inline-block;
+    margin-right: 20px;
+}
