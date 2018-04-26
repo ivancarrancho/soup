@@ -1,9 +1,7 @@
 <!DOCTYPE html>
 <html lang="es">
   <head>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://code.jquery.com/jquery-2.2.4.min.js"   integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="   crossorigin="anonymous"></script>
     <link rel="stylesheet" type="text/css" href="styles.css">
@@ -13,6 +11,7 @@
     <script src="main.js"></script>
   </head>
   <body>
+    <!-- Pone el REloj  -->
     <div id="contenedor">
         <div class="reloj" id="Horas">00</div>
         <div class="reloj" id="Minutos">:00</div>
@@ -22,6 +21,7 @@
     </div>
 
     <div class="container">
+        <!-- El formulario de la sopa de letras -->
         <form class="form-class">
             <h2>Sopa de letras</h2>
             <p>Por favor ingrese su nombre y las dimensiones de la sopa de letras:</p>
@@ -48,9 +48,10 @@
         </form>
 
         <h3 class="player" style="display:none"><b>Bienvenido:</b><p class="player-name"></p></h3>
-
+        <!--  Sopa custom-->
         <div class="letter-soup" style="display:none"></div>
 
+        <!-- Sopa random -->
         <div class="soup" style="display:none">
             <div id="puzzle-container"></div>
             <div id="puzzle-words"></div>
